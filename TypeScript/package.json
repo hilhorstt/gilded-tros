@@ -6,7 +6,9 @@
     "build": "tsc",
     "prestart": "npm run build",
     "start": "node dist/test/text-test-fixture.js",
+    "start:16days": "node dist/test/text-test-fixture.js 15",
     "test": "jest",
+    "test:coverage": "jest --coverage",
     "test:watch": "jest --watchAll"
   },
   "license": "MIT",
