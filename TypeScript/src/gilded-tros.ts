@@ -13,13 +13,10 @@ export class GildedTros {
         
         item.sellIn = item.sellIn - 1;
         
-
         if (item.sellIn < 0 && item.quality < 50) {
             item.quality = item.quality + 1;
         }
     }
-
-    updateBDAWGKeychain(): void {}
 
     updateBackstagePasses(item: Item): void {
         if (item.quality < 50) {
@@ -60,7 +57,6 @@ export class GildedTros {
                     this.updateGoodWine(item)
                     break
                 case 'B-DAWG Keychain':
-                    this.updateBDAWGKeychain()
                     break
                 
                 case 'Backstage passes for Re:Factor':
