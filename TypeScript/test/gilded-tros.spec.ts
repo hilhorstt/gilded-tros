@@ -42,7 +42,7 @@ describe('GildedTrosTest', () => {
             app.updateQuality()
             expect(app.items[0].quality).toBe(1);
         });
-        test('Ring of Cleansening Code -- day 11', () => {
+        test('Ring of Cleansening Code -- day many', () => {
             for (let i = 0; i < 55; i++) {
                 app.updateQuality()
             }
