@@ -69,12 +69,26 @@ export class GildedTros {
         }
     }
 
-    updateBDAWGKeychain(item: Item): void {
-        this.tempProcessFunction(item);
-    }
+    updateBDAWGKeychain(): void {}
 
     updateBackstagePasses(item: Item): void {
-        this.tempProcessFunction(item);
+        if (item.quality < 50) {
+            item.quality = item.quality + 1;
+
+            if (item.name == 'Backstage passes for Re:Factor' && item.sellIn < 11 && item.quality < 50) {
+                item.quality = item.quality + 1;
+            }
+            
+            if (item.sellIn < 6 && item.quality < 50) {
+                item.quality = item.quality + 1;
+            }
+        }
+
+        item.sellIn = item.sellIn - 1;
+
+        if (item.sellIn < 0) {
+            item.quality = item.quality - item.quality;
+        }
     }
 
     updateRegularItem(item: Item): void {
@@ -88,7 +102,7 @@ export class GildedTros {
                     this.updateGoodWine(item)
                     break
                 case 'B-DAWG Keychain':
-                    this.updateBDAWGKeychain(item)
+                    this.updateBDAWGKeychain()
                     break
                 
                 case 'Backstage passes for Re:Factor':
