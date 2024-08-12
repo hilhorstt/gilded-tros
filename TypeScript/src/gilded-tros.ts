@@ -24,13 +24,13 @@ export class GildedTros {
         
         item.sellIn -= 1;
         
-        if (item.sellIn < MIN_QUALITY && item.quality < MAX_QUALITY) {
+        if (item.sellIn < 0 && item.quality < MAX_QUALITY) {
             item.quality += 1;
         }
     }
 
     updateBackstagePasses(item: Item): void {
-        const qualityIncrease = item.quality < MAX_QUALITY ? 1 : MIN_QUALITY;
+        const qualityIncrease = item.quality < MAX_QUALITY ? 1 : 0;
 
         item.quality += qualityIncrease;
         
@@ -44,7 +44,7 @@ export class GildedTros {
 
         item.sellIn -= 1;
 
-        if (item.sellIn < MIN_QUALITY) {
+        if (item.sellIn < 0) {
             item.quality = MIN_QUALITY;
         }
     }
@@ -52,7 +52,7 @@ export class GildedTros {
     updateSmellyCode(item: Item): void {
         if (item.quality > MIN_QUALITY) {
             item.quality = Math.max(item.quality - 2, MIN_QUALITY)
-        } else if (item.sellIn < MIN_QUALITY) {
+        } else if (item.sellIn < 0) {
             item.quality = Math.max(item.quality - 4, MIN_QUALITY)
         }
         
@@ -66,7 +66,7 @@ export class GildedTros {
         
         item.sellIn -= 1;
 
-        if (item.sellIn < MIN_QUALITY && item.quality > MIN_QUALITY) {
+        if (item.sellIn < 0 && item.quality > MIN_QUALITY) {
             item.quality -= 1;
         }
     }
