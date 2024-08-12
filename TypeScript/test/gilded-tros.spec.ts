@@ -72,7 +72,7 @@ describe('GildedTrosTest', () => {
     })
     
     describe('Backstage passes for Re:Factor', () => {
-        const items: Item[] = [new Item('Backstage passes for Re:Factor', 11, 20)]
+        const items: Item[] = [new Item('Backstage passes for Re:Factor', 11, 20), new Item('Backstage passes for HAXX', 11, 20)]
         const app: GildedTros = new GildedTros(items);
         
         test('Backstage passes for Re:Factor -- day 0', () => {
@@ -118,7 +118,39 @@ describe('GildedTrosTest', () => {
             for (let i = 0; i < 16; i++) {
                 app.updateQuality()
             }
-            expect(app.items[0].quality).toBe(0); // TODO: expect this be 0
+            expect(app.items[0].quality).toBe(0);
+        });
+    })
+
+    describe('Smelly items', () => {
+        const items: Item[] = [
+            new Item('Duplicate Code', 11, 14),
+            new Item('Long Methods', 8, 13),
+            new Item('Ugly Variable Names', 5, 8),
+        ]
+        const app: GildedTros = new GildedTros(items);
+
+        test('Smelly code -- day 0', () => {
+            expect(app.items[0].quality).toBe(14);
+            expect(app.items[1].quality).toBe(13);
+            expect(app.items[2].quality).toBe(8);
+        })
+
+        test('Smelly code -- day 1', () => {
+            app.updateQuality()
+
+            expect(app.items[0].quality).toBe(12);
+            expect(app.items[1].quality).toBe(11);
+            expect(app.items[2].quality).toBe(6);
+        })
+
+        test('Smelly code -- day 13', () => {
+            for (let i = 0; i < 11; i++) {
+                app.updateQuality()
+            }
+            expect(app.items[0].quality).toBe(0);
+            expect(app.items[1].quality).toBe(0);
+            expect(app.items[2].quality).toBe(0);
         });
     })
 });
