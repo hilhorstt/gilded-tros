@@ -32,13 +32,16 @@ export class GildedTros {
     updateBackstagePasses(item: Item): void {
         const qualityIncrease = item.quality < MAX_QUALITY ? 1 : 0;
 
+        // Increment quality once by default
         item.quality += qualityIncrease;
-        
-        if (item.name === BACKSTAGE_PASSES_REFACTOR && item.sellIn < 11) {
+
+        // Increment quality once again when sellIn is 10 days or less
+        if (item.sellIn <= 10) {
             item.quality += qualityIncrease;
         }
 
-        if (item.sellIn < 6) {
+        // Increment quality a third time when sellIn is 5 days or less
+        if (item.sellIn <= 5) {
             item.quality += qualityIncrease;
         }
 
