@@ -117,7 +117,6 @@ describe('GildedTrosTest', () => {
         test('Backstage passes for Re:Factor -- day 12', () => {
             for (let i = 0; i < 16; i++) {
                 app.updateQuality()
-                console.log(app.items[0].quality)
             }
             expect(app.items[0].quality).toBe(0); // TODO: expect this be 0
         });
